@@ -42,7 +42,7 @@ const user = {
 // user.getAge();
 // user.getName();
 
-// EX-2
+// ########### EX-2
 // Declaration
 // function logMyName() {
 //     console.log(this.name);
@@ -54,18 +54,41 @@ const user = {
 // };
 
 // Arrow : Losing this
-const logMyName = () => console.log(this.name);
+// const logMyName = () => console.log(this.name);
 
-const user1 = {
-    name: 'jane',
-    log: logMyName,
-};
+// let name = "jane"
+// const user1 = {
+//     name: 'jane',
+//     log: logMyName,
+//     alert() {
+//         alert(this.name);
+//     },
+// };
 
-const user2 = {
-    name: 'robert',
-    log: logMyName,
-};
+// const user2 = {
+//     name: 'robert',
+//     log: logMyName,
+// };
 
 // ### this == current execution context === caller
-user1.log(); // this == object before the dot == caller !!
-user2.log();
+// user1.log(); // this == object before the dot == caller !!
+// user2.log();
+// user1.alert();
+
+// ########## EX-3 : This in Arrow function
+
+const obj = {
+    i: 10,
+    b: () => console.log(this),
+    // shorthand == function () {console.log(this.i, this);}
+    c: function () {
+        //
+        console.log(this.i);
+    },
+    d: function () {
+        let arrow = () => console.log(this.i);
+        arrow();
+    },
+};
+obj.b();
+obj.d();
