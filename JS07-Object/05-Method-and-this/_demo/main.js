@@ -36,8 +36,36 @@ const user = {
 // user.answer('!!!!!!!!');
 
 // ถ้าใช้ this กับ method ของ object ==> this == object before dot
-user.getAge();
-user.growOld();
+// user.getAge();
+// user.growOld();
 // user.growOld();
 // user.getAge();
 // user.getName();
+
+// EX-2
+// Declaration
+// function logMyName() {
+//     console.log(this.name);
+// }
+
+// Expression
+// const logMyName = function () {
+//     console.log(this.name);
+// };
+
+// Arrow : Losing this
+const logMyName = () => console.log(this.name);
+
+const user1 = {
+    name: 'jane',
+    log: logMyName,
+};
+
+const user2 = {
+    name: 'robert',
+    log: logMyName,
+};
+
+// ### this == current execution context === caller
+user1.log(); // this == object before the dot == caller !!
+user2.log();
