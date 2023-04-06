@@ -1,18 +1,56 @@
-const array = [1, 2, 3, 4, 5, 6];
+// const array = [1, 2, 3, 4, 5, 6];
+// const array = [1, 2, 3, 4, 5, 6];
 
-function summarizeFn(acc, item, index, arr) {
-    console.log(`ROUND:${index + 1}`, `ACC:${acc}`, item);
-    // DO-LOGIC about summarize
+// function summarizeFn(acc, item, index, arr) {
+//     console.log(`ROUND:${index + 1}`, `ACC:${acc}`, item);
+//     // DO-LOGIC about summarize
 
-    // Return : New Accumulator
+//     // Return : New Accumulator
 
-    // return acc + item;
-    return acc + item ** 2;
-}
+//     // return acc + item;
+//     // acc.push(item * 2); // [2,4,6]
+//     return acc; // [2,4,6]
+// }
 
-let result = array.reduce(summarizeFn, 0);
-console.log(result);
+// let result = array.reduce(summarizeFn);
+// console.log(result);
 // How reduce work
-// 1st : summarizeFn(0,1,0,array)  ==> acc
-// 2nd : summarizeFn(1 ,2,1,array)
-// 3rd : summarizeFn (3,3,2,array)
+// 1st : summarizeFn([],1,0,array)  ==> acc
+// 2nd : summarizeFn([2] ,2,1,array)
+// 3rd : summarizeFn ([2,4],3,2,array)
+// 3rd : summarizeFn ([2,4,6],3,2,array)
+
+// LAB 1
+
+// จงหาผลคูณของ element ใน nums
+// const nums = [-3, 2, 11, -7, 4, 6];
+
+// let result = nums.reduce(function (acc, item) {
+//     let result = acc * item;
+//     return result;
+// }, 1);
+
+// a : accumulator , prev : previous value
+// c : currentValue
+// let result = nums.reduce((a, c) => a * c, 1);
+// console.log(result);
+
+// LAB 3
+const scores = [
+    { score: 90, subject: 'HTML', weight: 0.2 },
+    { score: 95, subject: 'CSS', weight: 0.3 },
+    { score: 85, subject: 'JavaScript', weight: 0.5 },
+];
+// expected result: 89
+
+// Subject A : Grade : 4 , unit : 3
+// Subject B : Grade : 3 , unit : 1
+// (4*3 + 3*1)/(3+1)
+
+let result = scores.reduce((acc, cur) => {
+    let currentPoint = cur.score * cur.weight;
+    return acc + currentPoint;
+}, 0);
+
+let result2 = scores.reduce((a, c) => a + c.score * c.weight, 0);
+console.log(result, result2);
