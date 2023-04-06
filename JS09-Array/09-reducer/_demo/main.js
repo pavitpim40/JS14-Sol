@@ -36,21 +36,50 @@
 // console.log(result);
 
 // LAB 3
-const scores = [
-    { score: 90, subject: 'HTML', weight: 0.2 },
-    { score: 95, subject: 'CSS', weight: 0.3 },
-    { score: 85, subject: 'JavaScript', weight: 0.5 },
-];
+// const scores = [
+//     { score: 90, subject: 'HTML', weight: 0.2 },
+//     { score: 95, subject: 'CSS', weight: 0.3 },
+//     { score: 85, subject: 'JavaScript', weight: 0.5 },
+// ];
 // expected result: 89
 
 // Subject A : Grade : 4 , unit : 3
 // Subject B : Grade : 3 , unit : 1
 // (4*3 + 3*1)/(3+1)
 
-let result = scores.reduce((acc, cur) => {
-    let currentPoint = cur.score * cur.weight;
-    return acc + currentPoint;
-}, 0);
+// let result = scores.reduce((acc, cur) => {
+//     let currentPoint = cur.score * cur.weight;
+//     return acc + currentPoint;
+// }, 0);
 
-let result2 = scores.reduce((a, c) => a + c.score * c.weight, 0);
-console.log(result, result2);
+// let result2 = scores.reduce((a, c) => a + c.score * c.weight, 0);
+// console.log(result, result2);
+
+// LAB-5
+
+let arr = [3.24, 2.78, 3.86, 1.37, 0.52];
+// reduce => {min: minValue, max:maxValue}
+// reduce => [minValue,maxValue]
+
+// INIT ACC
+let initAcc = {
+    min: Infinity, // Infinity vs 3.24 => min : 3.24
+    max: -Infinity, // -Infinity vs 3.24 => max : 3.24
+};
+
+let result = arr.reduce(function (acc, cur) {
+    // {min: Infinity, max:-Infinity}
+    // Compare MIN
+    if (cur < acc.min) {
+        console.log('MIN', acc.min);
+        console.log('CUR', cur);
+        acc.min = cur; // {min: 3.24, max:-Infinity}
+    }
+    // Compare MAX
+    if (cur > acc.max) {
+        acc.max = cur; //  {min: 3.24, max:3.24}
+    }
+    return acc;
+}, initAcc);
+
+console.log(result);
