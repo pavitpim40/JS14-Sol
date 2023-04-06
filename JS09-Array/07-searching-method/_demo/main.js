@@ -43,21 +43,36 @@ const cart = [
 
 // console.log(r);
 
-// LAB-4
-const nums = [7, 9, -5, -1, 0, 3];
-// expexted result: -5
+// LAB-2
 
-// ##1
-const satisfyFn = function (num) {
-    if (num < 0) return true;
-};
-// let result = nums.find(satisfyFn)
+const alphabets = ['a', 'b', 'a', 'c', 'a', 'd'];
+// expexted result: [0, 2, 4]
 
-// ##2
-// let result = nums.find(function (num) {
-//     if (num < 0) return true;
+// findIndex => satisfy index ONCE
+// indexOf => index (but can provide fromIndex)
+// forEach,forOf
+
+let result = [];
+
+// for (let index in alphabets) {
+//     if (alphabets[index] == 'a') {
+//         result.push(+index);
+//     }
+// }
+
+// alphabets.forEach((char, index) => {
+//     if (char === 'a') result.push(index);
 // });
 
-// ##3
-let result = nums.find((num) => num < 0);
+let foundedIndex;
+let fromIndex = 0;
+do {
+    foundedIndex = alphabets.indexOf('a', fromIndex);
+    if (foundedIndex != -1) {
+        // 0
+        result.push(foundedIndex);
+        fromIndex = foundedIndex + 1;
+    }
+} while (foundedIndex != -1);
+
 console.log(result);
