@@ -86,27 +86,49 @@
 
 // LAB-8
 
-let str = 'I live in Thailand';
+// let str = 'I live in Thailand';
 // expected result: {i: 4, l: 2, v: 1, e:1, n: 2, t: 1, h:1, a:2, d:1}
 
 // const strArr = str.split('').map((char) => char.toLowerCase());
-const strArr = str
-    .toLowerCase()
-    .split('')
-    .filter((char) => char != ' ');
+// const strArr = str
+//     .toLowerCase()
+//     .split('')
+//     .filter((char) => char != ' ');
 
-console.log(strArr);
+// console.log(strArr);
 
-let result = strArr.reduce((acc, char) => {
-    // CASE 1 : ไม่มี char ใน object => เพิ่ม key และ value =1
-    if (!acc[char]) {
-        acc[char] = 1;
-    }
-    // CASE 2 : มี char ใน object อยู่แล้ว - count += 1
-    else {
-        acc[char] = acc[char] + 1;
-    }
+// let result = strArr.reduce((acc, char) => {
+//     // CASE 1 : ไม่มี char ใน object => เพิ่ม key และ value =1
+//     if (!acc[char]) {
+//         acc[char] = 1;
+//     }
+//     // CASE 2 : มี char ใน object อยู่แล้ว - count += 1
+//     else {
+//         acc[char] = acc[char] + 1;
+//     }
+//     return acc;
+// }, {});
+
+// console.log(result);
+
+// LAB 10
+const products = [
+    { id: 1, name: 'Crystal' },
+    { id: 4, name: 'Namthip' },
+    { id: 5, name: 'Nestle' },
+];
+// { 1: { name: 'Crystal' }, 4: { name: 'Namthip' }, 5: { name: 'Nestle' } };
+
+const result = products.reduce((acc, cur) => {
+    // let key = cur.id;
+    // let value = { name: cur.name };
+    // acc[key] = value;
+
+    acc[cur.id] = { name: cur.name };
     return acc;
 }, {});
+
+// ACC : {}
+// CUR :  { id: 1, name: 'Crystal' }
 
 console.log(result);
